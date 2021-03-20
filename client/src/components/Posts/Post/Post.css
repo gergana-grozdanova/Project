@@ -1,0 +1,46 @@
+
+
+.post {
+    vertical-align: top;
+    height: 25vh;
+    padding: 1%;
+    margin: 0.5%;
+    border-radius: 6px;
+}
+
+.post:hover {
+    border: 2px solid var(--main-blue);
+}
+
+.post a {
+    border: 1px solid var(--main-blue);
+    padding: 2%;
+    margin: 0 auto;
+    font-weight: bold;
+    display: block;
+    background-color: white;
+    color: var(--main-orange);
+    border-radius: 15px;
+    bottom: 0;
+    text-decoration: none;
+    text-align: center;
+}
+
+.post h3 {
+    text-align: center;
+    width: 100%;
+    color: var(--main-blue);
+    margin-bottom: 5%;
+}
+
+.post img {
+    /* border: 1px solid var(--main-blue); */
+    max-width: 250px;
+    display: block;
+    margin: 0 auto;
+}
+
+.post a:hover {
+    text-decoration: underline var(--main-orange);
+    cursor: pointer;
+}
