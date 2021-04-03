@@ -9,3 +9,12 @@ export async function getAllPosts() {
   const posts= await Post.find();
   return posts;
 }
+
+export async function getMyPosts(username) {
+  const posts=await Post.find({"creator":username})
+  return posts;
+}
+
+export async function deletePost(id) {
+    await Post.deleteOne({"_id":id})
+}

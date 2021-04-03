@@ -1,9 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import cookieParser from 'cookie-parser';
-
-import auth from '../middlewares/auth.js';
+//import cookieParser from 'cookie-parser';
 
 function setupExpress(app) {
     app.use(bodyParser.json({limit:"30mb",extended:true}));
@@ -15,9 +13,8 @@ function setupExpress(app) {
         extended: true
     }));
 
-    app.use(cookieParser());
+ //   app.use(cookieParser());
 
-    app.use(auth());
 }
 
 export default setupExpress;

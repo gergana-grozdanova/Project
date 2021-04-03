@@ -1,0 +1,17 @@
+h2{
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+}
+
+button{
+    align-tracks: 50%;
+}
+
+.container{
+    border-width: medium;
+    border-style:solid;
+    border-color:rgba(255, 255, 255, 0.438);
+}

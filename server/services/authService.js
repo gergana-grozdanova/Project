@@ -1,31 +1,30 @@
-const User=require('../models/User');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { SALT_ROUNDS, SECRET } = require('../config/config');
+import User from '../models/User.js';
+import bcrypt from 'bcrypt';
+//import jwt from 'jsonwebtoken';
+import config from '../config/config.js';
 
-async function register({username,password}) {
-    let salt =await bcrypt.genSalt(SALT_ROUNDS);
+export async function register({username,password}) {
+    
+    let salt =await bcrypt.genSalt(config.SALT_ROUNDS);
     let hash=await bcrypt.hash(password,salt);
 
     const user=new User({username,password:hash})
+    user.save();
 
-    return user.save();
+    return;
 }
-
-async function login(username,password) {
+ export async function getByUsername(username) {
+    const user= await User.findOne({username});
+    return user;
+}
+export async function login({username,password}) {
     console.log(password);
     let user= await User.findOne({username});
     if(!user) throw {message:'User not found'}
     console.log(user.password);
     let isMatch=await bcrypt.compare(password, user.password)
-    if(!isMatch) throw {message:'Incorect password'}
+    if(!isMatch) throw {message:'Incorect password'};
 
-    let token=jwt.sign({_id:user._id,roles:['admin']},SECRET)
-
-    return token;
+    return;
 }
 
-module.exports={
-    register,
-    login,
-}

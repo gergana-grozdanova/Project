@@ -8,8 +8,7 @@ expressSetup(app);
 import dbSetup from'./config/mongoose.js';
 dbSetup(app);
 
-
-app.use(routes)
+app.use(routes);
 
 
 

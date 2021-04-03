@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const postSchema=mongoose.Schema({
        id: mongoose.Types.ObjectId,
-       title:{
+       destination:{
            type:String,
            required:true,
        },
@@ -11,15 +11,19 @@ const postSchema=mongoose.Schema({
         minlength:4,
         required: true,
        },
-       imageSelected:{
+       selectedFile:{
            type:String
        },
        likes:{
            type:Number,
            default:0
        },
+       dateCreated: {
+           type: Date, 
+           default: Date.now
+        },
        creator: {
-        type: mongoose.Types.ObjectId,
+        type: String,
         ref: 'User'
     }
 });
