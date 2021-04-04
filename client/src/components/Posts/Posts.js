@@ -1,10 +1,12 @@
 import React,{Component} from 'react';
 import Post from '../Posts/Post/Post';
-
+import {AppContext} from '../../context'
+import { Link } from 'react-router-dom';
+import '../Posts/Posts.css'
 
 
 class Posts extends Component{
-
+  static contextType=AppContext;
   constructor(){
     super()
     this.state={
@@ -61,6 +63,7 @@ getDate(post){
 }
 
 render(){
+  const{isAuth}=this.context;
   let fetchedposts;
   if (this.state.posts) {
       fetchedposts = this.state.posts.map(post => (
@@ -70,8 +73,14 @@ render(){
   }
 
           return(
-           <div className="posts">
-             {fetchedposts}
+           <div>
+             {isAuth?
+             <div className="posts">{fetchedposts}</div>
+             :
+             <div className="guest">
+               <h1>You are logged out!</h1>
+               <h3><Link to="/login">Login</Link> to see all blogs</h3>
+               </div>}
            </div>
           )
       }

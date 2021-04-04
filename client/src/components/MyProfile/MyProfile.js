@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from '../MyProfile/MyProfile.module.css';
-import {getAll,getDate} from '../../services/posts'
+import {getAll,getDate} from './posts'
 import {AppContext} from '../../context'
 
 
@@ -45,6 +45,7 @@ static contextType=AppContext;
       }
 
     render(){
+        const {isAuth}=this.context;
         let fetchedposts;
       if (this.state.posts.length>0) {
       fetchedposts = this.state.posts.map(post => (
@@ -61,7 +62,8 @@ static contextType=AppContext;
 
         return(
             <div>
-                {fetchedposts}
+                {isAuth ?fetchedposts:<div>Log in <Link to="/login">here</Link></div>}
+               
             </div>
         )
     }

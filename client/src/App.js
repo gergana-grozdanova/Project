@@ -9,10 +9,9 @@ import AddPostForm from './components/Forms/Post';
 import Posts from "./components/Posts/Posts";
 import MyProfile from "./components/MyProfile/MyProfile";
 
-import {deleteToken} from './services/token.js'
-import AppContextProvider,{AppContext} from './context'
+import AppContextProvider from './context'
 import Logout from "./components/Logout";
-//import {getToken} from './services/token'
+
 
 
 

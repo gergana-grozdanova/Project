@@ -1,10 +1,11 @@
 import '../Forms/Forms.css';
-import {  useState } from 'react';
-import {getToken} from '../../services/token.js'
+import {  useState ,useContext} from 'react';
+import{AppContext} from '../../context';
+import { Link } from 'react-router-dom';
 
 const Post=({history})=>{
 
-   
+    const {username,isAuth}=useContext(AppContext)
    const [message,setMessage]=useState();
 
    const  handleSubmit = e => {
@@ -14,7 +15,7 @@ const Post=({history})=>{
                  description:e.target.description.value,
                   destination:e.target.destination.value,
                   selectedFile:e.target.selectedFile.value,
-                  creator:getToken()
+                  creator:username
                 }
       console.log(post)
   
@@ -30,7 +31,7 @@ const Post=({history})=>{
           .then(response => response.json())
           .then(resp=>{
               if (resp.error) {
-                  setMessage()
+                  setMessage(resp.error.message)
               }else{
                 setMessage("New post created!")
                 history.push('/');
@@ -42,7 +43,9 @@ const Post=({history})=>{
 
 
     return(
+        
         <>
+        {isAuth?
         <section >
         <h2 className="create-post-t">Create new post</h2>
         <form onSubmit={handleSubmit}>
@@ -57,10 +60,12 @@ const Post=({history})=>{
                 <input type="text" id="selectedFile" name="selectedFile" />
 
                 <button type="submit">POST</button>
-                              <p>{message}</p>
+                <p>{message}</p>
             </div>
         </form>
     </section>
+    :<p style={{textAlign:"center"}}>You aren't logged in! <Link to="/login">Login here...</Link></p>
+    }
         </>
     )
 }

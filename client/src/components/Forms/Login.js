@@ -1,7 +1,7 @@
 import '../Forms/Forms.css';
 import {  useState,useContext } from 'react';
-//import { setToken} from '../../services/token.js';
 import{AppContext} from '../../context';
+import { Link } from 'react-router-dom';
 
 const Login =({history})=> {
    
@@ -52,6 +52,8 @@ const Login =({history})=> {
                     <input type="password" placeholder="Enter Password" name="password" required />
 
                     <button type="submit">Login</button>
+                    <p style={{textAlign:"center"}}>Don't have a profile? <Link to="/register">Register now!</Link></p>
+                    <p>{message}</p>
                 </div>
             </form>
         );

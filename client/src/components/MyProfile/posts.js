@@ -1,5 +1,3 @@
-import {getToken} from './token'
-
 export function getAll(username){
 return fetch(`http://localhost:5555/post/${username}`,{
     method: "GET",

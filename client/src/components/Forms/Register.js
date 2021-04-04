@@ -1,6 +1,6 @@
-import {useState,useContext} from 'react'
+import {useState,useContext} from 'react';
+import { Link } from 'react-router-dom';
 import '../Forms/Forms.css';
-import {setToken} from '../../services/token.js'
 import{AppContext} from '../../context';
 
 const Register =({history})=> {
@@ -91,6 +91,7 @@ const Register =({history})=> {
                     <input type="password" placeholder="Repeat Password" name="rePassword" required onChange={handleRePasswordChange} />
 
                     <button type="submit">Register</button>
+                    <p style={{textAlign:"center"}}>Already have a profile? <Link to="/login">Login here!</Link></p>
                     <p>{message}</p>
                 </div>
             </form>
